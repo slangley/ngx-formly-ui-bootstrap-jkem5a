@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
+import {Subject} from 'rxjs';
 
 @Component({
  selector: 'formly-field-input',
@@ -16,8 +17,17 @@ import { FieldType } from '@ngx-formly/core';
 })
 export class FormlyFieldInput extends FieldType implements OnInit {
 
+  private fooz = new Subject<string>();
+
   ngOnInit() {
-    this.form.valueChanges.subscribe( (changes)=> console.log("CCCHCHANGES",changes));
+    this.fooz.subscribe((val)=>console.log("FOOXZ", val));
+
+    this.form.valueChanges.subscribe( (changes)=> {
+        let fooz = changes[this.to.fooz];
+        if (fooz) {
+          this.fooz.next(fooz);
+        }
+    });
   }
 
   virtualKeyboardClick(event){

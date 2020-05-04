@@ -17,6 +17,8 @@ export class AppComponent {
         label: 'Input',
         placeholder: 'Input placeholder',
         required: true,
+        fooz:"textarea",
+        barz:"checkbox"
       }
     },
     {
