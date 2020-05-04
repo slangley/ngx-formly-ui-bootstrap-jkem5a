@@ -5,6 +5,8 @@ import {Subject} from 'rxjs';
 @Component({
  selector: 'formly-field-input',
  template: `
+  <p>{{fooz | async}}</p>
+
    <input type="input" [formControl]="formControl" [formlyAttributes]="field">
    
    <div>
